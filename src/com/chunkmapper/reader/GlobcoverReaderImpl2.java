@@ -20,6 +20,7 @@ import com.chunkmapper.parser.Nominatim;
 
 public class GlobcoverReaderImpl2 implements GlobcoverReader {
 	public static final int REGION_WIDTH = 50;
+	// This appears to be where ~/.chunkmapper/mat comes from
 	public static final File CACHE_DIR = new File(Utila.CACHE, "mat");
 	static {
 		CACHE_DIR.mkdirs();

@@ -46,6 +46,8 @@ public class HeightsReaderS3 implements HeightsReader {
 	public HeightsReaderS3(int regionx, int regionz, int verticalExaggeration) throws IOException, InterruptedException, DataFormatException {
 
 		double buffer = Utila.HEIGHTS_START / 3600.;
+		
+		// Based on region coordinates, determine lon/lat
 		double lon1 = regionx * 512. / 3600 - buffer, lon2 = lon1 + 512. / 3600 + 2 * buffer;
 		double lat2 = -regionz * 512. / 3600 + buffer, lat1 = lat2 - 512. / 3600 - 2 * buffer;
 
@@ -73,9 +75,7 @@ public class HeightsReaderS3 implements HeightsReader {
 				}
 			}
 		}
-//		System.out.println("c");
-//		int rooti = (int) ((lati2 + 1 - lat2) * 1200);
-//		int rootj = (int) ((lon1 - loni1) * 1200);
+		
 		double rooti = (lati2 + 1 - lat2) * 1200;
 		double rootj = (lon1 - loni1) * 1200;
 		int imax = height * 1200 - 1, jmax = width * 1200 - 1;

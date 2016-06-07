@@ -1,9 +1,6 @@
 package com.chunkmapper.enumeration;
 
 public class Blocka {
-	public static final byte Stained_Clay = (byte) 172;
-	public static final byte Stained_Glass = (byte) 95;
-	public static final byte Trapdoor = (byte) 96;
 	public static final byte Air = (byte) 0;
 	public static final byte Stone = (byte) 1;
 	public static final byte Grass = (byte) 2;
@@ -29,9 +26,11 @@ public class Blocka {
 	public static final byte Sandstone = (byte) 24;
 	public static final byte Note_Block = (byte) 25;
 	public static final byte Bed = (byte) 26;
+	public static final byte Long_Grass = (byte) 31;
 	public static final byte Wool = (byte) 35;
 	public static final byte Yellow_Flower = (byte) 37;
 	public static final byte Red_Flower = (byte) 38;
+	public static final byte Rose = (byte) 38;
 	public static final byte Brown_Mushroom = (byte) 39;
 	public static final byte Red_Mushroom = (byte) 40;
 	public static final byte Gold_Block = (byte) 41;
@@ -66,8 +65,8 @@ public class Blocka {
 	public static final byte Stone_Pressure_Plate = (byte) 70;
 	public static final byte Metal_Door_Placed = (byte) 71;
 	public static final byte Wooden_Pressure_Plate = (byte) 72;
-	public static final byte Redstone_Ore_Type_1 = (byte) 1;
-	public static final byte Redstone_Ore_Type_2 = (byte) 2;
+	public static final byte Redstone_Ore_Type_1 = (byte) 73;
+	public static final byte Redstone_Ore_Type_2 = (byte) 74;
 	public static final byte Redstone_Torch_Unlit = (byte) 75;
 	public static final byte Redstone_Torch_Lit = (byte) 76;
 	public static final byte Button = (byte) 77;
@@ -86,33 +85,34 @@ public class Blocka {
 	public static final byte Portal = (byte) 90;
 	public static final byte Lit_JackOLantern = (byte) 91;
 	public static final byte Cake = (byte) 92;
-	public static final byte Long_Grass = (byte) 31;
 	public static final byte Dandelion = (byte) 37;
 	public static final byte Wood = (byte) 17;
 	public static final byte Dead_Bush = (byte) 32;
-	public static final byte Vine = (byte) 106;
-	public static final byte End_Stone = (byte) 121;
 	public static final byte Wheat = (byte) 59;
+	public static final byte Powered_Rail = (byte) 27;
+	public static final byte Wooden_Door = (byte) 64;
+	public static final byte Rail = (byte) 66;
+	public static final byte Stained_Glass = (byte) 95;
+	public static final byte Trapdoor = (byte) 96;
+	public static final byte Stone_Brick = (byte) 98;
+	public static final byte Window = (byte) 102;
+	public static final byte Vine = (byte) 106;
+	public static final byte Gate = (byte) 107;
+	public static final byte Stone_Stairs = (byte) 109;
+	public static final byte Lilly = (byte) 111;
+	public static final byte Nether_Brick = (byte) 112;
+	public static final byte Nether_Fence = (byte) 113;
+	public static final byte End_Stone = (byte) 121;
+	public static final byte Emerald = (byte) 129;
+	public static final byte Birch_Stairs = (byte) 135;
+	public static final byte Flower_Pot = (byte) 140;
 	public static final byte Carrots = (byte) 141;
 	public static final byte Potatoes = (byte) 142;
-	public static final byte Rail = (byte) 66;
-	public static final byte Powered_Rail = (byte) 27;
-	public static final byte Stone_Brick = (byte) 98;
-	public static final byte Wooden_Door = (byte) 64;
-	public static final byte Window = (byte) 102;
-	public static final byte Nether_Brick = (byte) 112;
-	public static final byte Birch_Stairs = (byte) 135;
-	public static final byte Nether_Fence = (byte) 113;
-	public static final byte Block_Of_Quartz = (byte) 155;
-	public static final byte Stone_Stairs = (byte) 109;
 	public static final byte Heavy_Plate = (byte) 148;
-	public static final byte Gate = (byte) 107;
-	public static final byte Lilly = (byte) 111;
-	public static final byte Rose = (byte) 38;
-	public static final byte Emerald = (byte) 129;
-	public static final byte Flower_Pot = (byte) 140;
+	public static final byte Block_Of_Quartz = (byte) 155;
 	public static final byte Nether_Quartz_Ore = (byte) 159;
-	public static final byte Coal_Block = (byte) 173;
+	public static final byte Stained_Clay = (byte) 172;
 	public static final byte Hardened_Clay = (byte) 172; //colored clay with data = 0;
+	public static final byte Coal_Block = (byte) 173;
 
 }

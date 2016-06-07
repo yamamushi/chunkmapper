@@ -1,8 +1,10 @@
 .DS_Store
 target
 .project
+.idea
 dependency-reduced-pom.xml
 dist/.ant-targets-build.xml
+chunkmapper.iml
 
 # Package Files #
 *.jar

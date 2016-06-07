@@ -162,7 +162,7 @@ public class OsmosisParser implements OverpassObjectSource {
 		try {
 			URL url = new URL(URLs.OSM);
 			BufferedReader br = new BufferedReader(new InputStreamReader(url.openStream()));
-//			BufferedReader br = new BufferedReader(new FileReader(new File("/Users/matthewmolloy/python/webstore/static/osm.txt")));
+//			BufferedReader br = new BufferedReader(new FileReader(new File("~/.chunkmapper/python/webstore/static/osm.txt")));
 			ArrayList<Rectangle> out = new ArrayList<Rectangle>();
 			String line;
 			while ((line = br.readLine()) != null) {
