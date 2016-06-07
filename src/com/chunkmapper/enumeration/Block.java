@@ -1,6 +1,7 @@
 package com.chunkmapper.enumeration;
 
 public enum Block {
+
 	Air ((byte) 0),
 	Stone ((byte) 1),
 	Grass ((byte) 2),
