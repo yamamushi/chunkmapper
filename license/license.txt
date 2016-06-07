@@ -1,0 +1,9 @@
+This project was previously closed source and available @ http://chunkmapper.com/ for a fee.
+
+It has since been open sourced, https://github.com/whamtet/chunkmapper , and the license is now more permissive than before.
+
+Most importantly, modifications to the source are allowed now.
+
+I am still in discussions with the original author to determine what license he would like the project covered under.
+
+- Yamamushi @ June 6th 2016
