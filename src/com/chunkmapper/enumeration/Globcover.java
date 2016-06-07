@@ -7,8 +7,13 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 
+// Contains information about the Globcover storage format
+
 public enum Globcover {
-	//contains info about the Globcover storage format
+	
+	// Reference found at: 
+	// http://www.edenextdata.com/?q=content/esa-globcover-version-23-2009-300m-resolution-land-cover-map-0
+	
 	IrrigatedCrops, RainfedCrops, CroplandWithVegetation, VegetationWithCropland, BroadleafEvergreen,
 	ClosedBroadleafDeciduous, OpenBroadleafDeciduous, ClosedNeedleleafEvergreen, OpenNeedleleaf,
 	MixedBroadNeedleleaf, ForestShrublandWithGrass, GrassWithForestShrubland, Shrubland, Grassland,

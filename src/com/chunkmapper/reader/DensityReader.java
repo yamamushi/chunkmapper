@@ -77,7 +77,7 @@ public class DensityReader {
 		int regionz = (int) Math.floor(-latlon[0] * 3600 / 512);
 		DensityReader reader = new DensityReader(null, regionx, regionz);
 		
-		PrintWriter pw = new PrintWriter(new BufferedWriter(new FileWriter("/Users/matthewmolloy/python/plot2d/data.csv")));
+		PrintWriter pw = new PrintWriter(new BufferedWriter(new FileWriter("~/.chunkmapper/python/plot2d/data.csv")));
 		for (int i = 0; i < 512; i++) {
 			for (int j = 0; j < 512; j++) {
 				pw.println(reader.getDensityij(i, j));

@@ -107,7 +107,7 @@ public class RainfedCrops extends AbstractColumn {
 				chunk.Blocks[h][z][x] = Block.Fence.val;
 			}
 		} else if (farmType == FarmType.Cows || farmType == FarmType.Chicken || 
-				farmType == FarmType.Sheep || farmType == FarmType.Horses) {
+				farmType == FarmType.Sheep || farmType == FarmType.Horses || farmType == FarmType.Pig ) {
 			if (RANDOM.nextInt(3) == 0) {
 				chunk.Blocks[h][z][x] = Block.Long_Grass.val;
 				chunk.Data[h][z][x] = DataSource.Long_Grass.val;
@@ -124,6 +124,10 @@ public class RainfedCrops extends AbstractColumn {
 			case Sheep:
 				if (RANDOM.nextInt(256/FarmType.SHEEP_DENSITY) == 0)
 					MobWriter.addAnimal(chunk, "Sheep");
+				break;
+			case Pig:
+				if (RANDOM.nextInt(256/FarmType.PIG_DENSITY) == 0)
+					MobWriter.addAnimal(chunk, "Pig");
 				break;
 			case Horses:
 				if (RANDOM.nextInt(256/FarmType.COW_DENSITY) == 0)

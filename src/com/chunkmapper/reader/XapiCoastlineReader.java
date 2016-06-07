@@ -42,7 +42,7 @@ public class XapiCoastlineReader {
 //			}
 //		}
 //		pw.close();
-		reader.print(new File("/Users/matthewmolloy/python/plot2d/data.csv"));
+		reader.print(new File("~/.chunkmapper/python/plot2d/data.csv"));
 		System.out.println("done");
 	}
 

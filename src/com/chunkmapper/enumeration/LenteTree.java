@@ -25,7 +25,7 @@ public enum LenteTree {
 	}
 	
 	private static void createEnum() {
-		File f = new File("/Users/matthewmolloy/workspace/chunkmapper2/resources/trees");
+		File f = new File("~/.chunkmapper/resources/trees");
 		StringBuilder sb = new StringBuilder();
 		int i = 0;
 		for (File child : f.listFiles()) {
