@@ -11,7 +11,7 @@ public class GlobalSettings {
 	private int verticalExaggeration = 1;
 	public boolean refreshNext;
 	public boolean nz;
-	public int generationRadius = 3;
+	public int generationRadius = 6;
 	
 	public boolean isLive() {
 		// TODO Auto-generated method stub

@@ -87,7 +87,7 @@ public class MPThread {
 
 
 	private static void start() throws Exception {
-		System.out.println("Welcome to Chunkmapper Multiplayer");
+		System.out.println("Welcome to Chunkmapper Multiplayer (modified by Yamamushi 0.01)");
 		checkNetwork();
 		checkSupported();
 		authenticate();

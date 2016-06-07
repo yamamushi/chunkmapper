@@ -121,9 +121,12 @@ public class RegionWriter extends Tasker {
 		
 		int playerChunkx = 0, playerChunkz = 0;
 		Point playerPosition = null;
-		boolean isRootPoint = a == 0 && b == 0;
-		if (isRootPoint) {
+		
+		boolean isRootPoint = a == 0 && b == 0; //Determined by the task.x task.y
+		if (isRootPoint) { 
 			playerPosition = levelDat.getPlayerPosition();
+			
+			// Modulus to determine chunk from exact player coordinates
 			playerChunkx = Matthewmatics.mod(Matthewmatics.div(playerPosition.x, 16), 32);
 			playerChunkz = Matthewmatics.mod(Matthewmatics.div(playerPosition.z, 16), 32);
 		}
@@ -137,8 +140,14 @@ public class RegionWriter extends Tasker {
 				}
 				int abschunkx = chunkx + regionx * 32, abschunkz = chunkz + regionz * 32;
 				Chunk chunk = coverManager.getChunk(abschunkx, abschunkz, chunkx + a*32, chunkz + b*32);
+				
+				// I'm assuming this is the caller to get the map data
 				DataOutputStream stream = regionFile.getChunkDataOutputStream(chunkx, chunkz);
+				
+				// A helper class to write data out
 				NbtIo.write(chunk.getTag(), stream);
+				
+				// Cleanup the stream 
 				stream.close();
 				
 				if (isRootPoint && chunkx == playerChunkx && chunkz == playerChunkz) {
@@ -149,12 +158,16 @@ public class RegionWriter extends Tasker {
 				}
 			}
 		}
+		
 		regionFile.close();
 		if (MySecurityManager.offlineValid)
 			FileValidator.setSupervalid(f);
 		pointManager.flagPointCompletion(task);
 		gameMetaInfo.incrementChunksMade();
 		MyLogger.LOGGER.info("Wrote point at " + p.toString());
+		
+		// This manager appears to write a file containing the mapped points in 0's and X's
+		// It likely needs work
 		if (mappedSquareManager != null)
 			mappedSquareManager.addFinishedPoint(p);
                 

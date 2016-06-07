@@ -29,7 +29,7 @@ public class MPPointManager {
 	//	private final ArrayList<Point> pointsAssigned = new ArrayList<Point>();
 	private final HashSet<Point> pointsAssigned = new HashSet<Point>();
 	private final File store;
-	public final static int RAD = 3, LON_RAD = 180 * 3600 / 512;
+	public final static int RAD = 12, LON_RAD = 180 * 3600 / 512;
 	private final TextDisplay textDisplay;
 
 	public MPPointManager(File chunkmapperFolder, TextDisplay textDisplay, Point rootPoint, File gameFolder) {
@@ -95,9 +95,14 @@ public class MPPointManager {
 		return d2 < d ? d2 : d;
 	}
 	public HashSet<Point> getNewPoints(File gameFolder, Point rootPoint) {
+		
+		// Grab our player positions
 		HashMap<String, Point> playerPositions = readPositions(gameFolder);
-		//need to update playerPosition
+		
+		// Cycle through and add needed region points to the hash set
 		HashSet<Point> newPoints = new HashSet<Point>();
+		
+		// For players in hashmap
 		for (String playerName : playerPositions.keySet()) {
 			Point playerPosition = playerPositions.get(playerName);
 
@@ -108,10 +113,18 @@ public class MPPointManager {
 
 			int regionx1 = regionx0 - RAD, regionx2 = regionx0 + RAD;
 			int regionz1 = regionz0 - RAD, regionz2 = regionz0 + RAD;
-			if (regionx1 <= -LON_RAD) regionx1 = -LON_RAD + 1;
-			if (regionz1 <= -LON_RAD / 2) regionz1 = -LON_RAD / 2 + 1;
-			if (regionx2 >= LON_RAD) regionx2 = LON_RAD - 1;
-			if (regionz2 >= LON_RAD / 2) regionz2 = LON_RAD / 2 - 1;
+			
+			if (regionx1 <= -LON_RAD) 
+				regionx1 = -LON_RAD + 1;
+			
+			if (regionz1 <= -LON_RAD / 2) 
+				regionz1 = -LON_RAD / 2 + 1;
+			
+			if (regionx2 >= LON_RAD) 
+				regionx2 = LON_RAD - 1;
+			
+			if (regionz2 >= LON_RAD / 2) 
+				regionz2 = LON_RAD / 2 - 1;
 
 			for (int regionx = regionx1; regionx <= regionx2; regionx++) {
 				for (int regionz = regionz1; regionz <= regionz2; regionz++) {
@@ -119,6 +132,7 @@ public class MPPointManager {
 				}
 			}
 		}
+		
 		if (playerPositions.size() == 0) {
 			//need to add some default positions
 			for (int regionx = -RAD; regionx <= RAD; regionx++) {
@@ -148,9 +162,9 @@ public class MPPointManager {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-	}
+	} 
 	public static void main(String[] args) throws Exception {
-		File parentFolder = new File("/Users/matthewmolloy/Downloads/world");
+		File parentFolder = new File("~/.chunkmapper/world");
 	}
 
 }
