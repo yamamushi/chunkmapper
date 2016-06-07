@@ -1,10 +1,14 @@
-Chunkmapper projects the earth onto an arcsecond resolution rectangular grid.  Given a point P(lat, lon, alt) the chunkmapper coordinates are
+Chunkmapper projects the earth onto an arcsecond resolution rectangular grid.
+Given a point P(lat, lon, alt) the chunkmapper coordinates are
 
 absx = lon * 3600
 absz = -lat * 3600
 absy = alt / 31
 
-where lat is degrees north of the equator, lon is degrees east of Greenwich and alt is altitude in metres.  Lat varies from -90 to 90 and lon varies from from -180 to 180.  Longitudinal wrapping is not currently implemented, so if you cross the International Date Line or the north or south poles there's just open ocean.  The rectangular projection stretches earth along an east-west axis by factor 1/cos(lat).
+where lat is degrees north of the equator, lon is degrees east of Greenwich and alt is altitude in metres.
+Lat varies from -90 to 90 and lon varies from from -180 to 180.  Longitudinal wrapping is not currently
+implemented, so if you cross the International Date Line or the north or south poles there's just open ocean.
+The rectangular projection stretches earth along an east-west axis by factor 1/cos(lat).
 
 Given a Chunkmapper block at coordinates (x, y, z) there are two additional coordinate systems
 
@@ -16,20 +20,23 @@ and
 regionx = x / 512
 regionz = z / 512
 
-Each (regionx, regionz) coordinate is independently generated, speeding execution on multi-CPU machines.  To facilitate top-down mapping a root point (rootPointx, rootPointz) is defined as
+Each (regionx, regionz) coordinate is independently generated, speeding execution on multi-CPU machines.
+To facilitate top-down mapping a root point (rootPointx, rootPointz) is defined as
 
 rootPointx = x0 / 512
 rootPointz = z0 / 512
 
-where (x0, z0) are the intial coordinates selected by the player in the gui.  This enables Minecraft coordinates to be calculated as
+Where (x0, z0) are the initial coordinates selected by the player in the gui.
+This enables Minecraft coordinates to be calculated as
 
 x = absx - rootPointx * 512
 y = absy
-z = absz - rootPoinz - 512
+z = absz - rootPointz - 512
 
 Notes
 
-For some strange reason the creators of Java used an unorthodox definition of mod that allows negative numbers and breaks circular symmetry.
+For some strange reason the creators of Java used an unorthodox definition of mod that allows negative numbers
+and breaks circular symmetry.
 
 e.g.
 
