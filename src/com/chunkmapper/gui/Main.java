@@ -141,6 +141,12 @@ public class Main extends ApplicationTemplate
 			System.exit(0);
 		}
 	}
+	
+	
+	/***********************************************************************************************
+	* This method reads a text file from /chunkmapper/chunkmapperResources/build-no.txt.
+	* The current value stored in that file is '42' (6/11/2016)
+	************************************************************************************************/
 	private static void printBuild() {
 		try {
 			URL url = Main.class.getResource("/build-no.txt");
