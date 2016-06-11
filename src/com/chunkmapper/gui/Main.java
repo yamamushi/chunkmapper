@@ -153,6 +153,9 @@ public class Main extends ApplicationTemplate
 		}
 	}
 
+	/***********************************************************************************************
+	* First code that runs when chunkmapper is launched from the batch file or shell script...
+	************************************************************************************************/
 	public static void main(String[] args) {
 		printBuild();
 		getBucket();
