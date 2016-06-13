@@ -112,6 +112,10 @@ public class Main extends ApplicationTemplate
 		wwd.getModel().getLayers().add(new MainLayer(wwd, appFrame, minecraftDir, globalSettings));
 	}
 
+	/*****************************************************************
+	 * Literally checks to see if one of the passed in arguments is
+	 * called "-flawed" ? Why? crashbox27 6/11/2016
+	 ****************************************************************/
 	private static boolean hasFlawed(String[] args) {
 		for (String arg : args) {
 			if (arg.equals("-flawed"))
@@ -119,6 +123,7 @@ public class Main extends ApplicationTemplate
 		}
 		return false;
 	}
+	
 //	private static void printUser() {
 //		String initLog = PreferenceManager.getInitLog();
 //		if (initLog == null) {
@@ -135,41 +140,86 @@ public class Main extends ApplicationTemplate
 //			MyLogger.LOGGER.info(initLog);
 //		}
 //	}
+
+	/**************************************************************************************************************************
+	* This method reads a text file from http://chunkmapper.admin.s3-website-us-east-1.amazonaws.com/buckets.txt"
+	* and assigns the key/value pairs (mostly s3 URLS and some config options) to the BucketInfo classes static map variable.
+	***************************************************************************************************************************/
 	private static void getBucket() {
 		if (!BucketInfo.initMap()) {
 			JOptionPane.showMessageDialog(null, "Chunkmapper could not connect with the internet.  Please check your connection and try again.");
 			System.exit(0);
 		}
 	}
+	
+	/***********************************************************************************************
+	* This method reads a text file from /chunkmapper/chunkmapperResources/build-no.txt.
+	* The current value stored in that file is '42' (6/11/2016)
+	* It then reads /chunkmapper/chunkmapperResources/version.txt via the Utilia.VERSION readVersion() method
+	* which currently has the value "0.3-SINGLEPLAYER" (6/11/2016)
+	************************************************************************************************/
 	private static void printBuild() {
 		try {
 			URL url = Main.class.getResource("/build-no.txt");
 			BufferedReader br = new BufferedReader(new InputStreamReader(url.openStream()));
 			MyLogger.LOGGER.info("build-no: " + br.readLine());
-			MyLogger.LOGGER.info("verion: " + Utila.VERSION);
+			MyLogger.LOGGER.info("version: " + Utila.VERSION);
 			br.close();
 		} catch (IOException e) {
 			MyLogger.LOGGER.severe(MyLogger.printException(e));
 		}
 	}
 
+	/***********************************************************************************************
+	* First code that runs when chunkmapper is launched from the batch file or shell script...
+	************************************************************************************************/
 	public static void main(String[] args) {
+		
+		// Prints the build number, stored in /chunkmapper/chunkmapperResources/build-no.txt
+		// Then prints the version stored in /chunkmapper/chunkmapperResources/version.txt 
 		printBuild();
+		
+		// Reads the contents of buckets.txt (a bunch of s3 URLs and some config options) into static BucketInfo.map variable
 		getBucket();
-		if (BucketInfo.mustUpgrade()) {
+		
+		// Depends on the setting of 'mu' in buckets.txt. Current value is set to 'no' (mu no) so this should return false.
+		// Commenting out for now, since we don't need this functionality. crashbox27 6/11/2016
+		/* if (BucketInfo.mustUpgrade()) {
 			JOptionPane.showMessageDialog(null, "This version of Chunkmapper is no longer supported.  Visit www.chunkmapper.com to upgrade.");
 			System.exit(0);
-		}
-		if (!PreferenceManager.getIgnoreUpgrade() && BucketInfo.spUpgradeAvailable()) {
+		}*/
+		
+		// getIgnoreUpgrade should return false since it's never set in the PreferenceManager.data static hashmap
+		// so the first half of the logic below should return true. The second half of this statement should return
+		// false because latest-sp in buckets.txt = 0.3-SINGLEPLAYER and version.txt also = 0.3-SINGLEPLAYER.
+		// Commenting out for now, since this call isn't doing anything we need. crashbox27 6/11/2016
+		/* if (!PreferenceManager.getIgnoreUpgrade() && BucketInfo.spUpgradeAvailable()) {
 			(new UpgradeAvailableDialog(null)).setVisible(true);
-		}
-		LicenseManager.checkLicense(null);
-		if (hasFlawed(args))
+		}*/
+		
+		// LicenseManager creates another cached file, license.txt on the Utilia.CACHE. The call below checks to see
+		// if the VERSION string "beta" defined in LicenseManager matches the value stored in license.txt, but since
+		// I don't see where this is ever set, it's essentially a null == null check for now. Commenting out the code
+		// since it isn't really doing anything. crashbox27 6/11/2016
+		/* LicenseManager.checkLicense(null);
+		*/
+		
+		// No idea why this is here. If one of your passed in args is "-flawed" then a static File variable
+		// on Utilia is set with the name "poo". I'm leaving it in for now, but have no idea why you'd use this.
+		// crashbox27 6/11/2016
+		if (hasFlawed(args)){
 			Utila.MINECRAFT_DIR = new File("poo");
+		}
+		
+		// Checking the number of bytes the JVM is set to use...
 		long availableMemory = Runtime.getRuntime().maxMemory();
 		if (availableMemory < 1000000000)
 			System.err.println("Warning: Xmx set too low: " + availableMemory);
-//		String title = MySecurityManager.isOfflineValid() ? "Chunkmapper" : "Chunkmapper - Free Version";
+		
+		// Not relevant anymore...	
+		// String title = MySecurityManager.isOfflineValid() ? "Chunkmapper" : "Chunkmapper - Free Version";
+		
+		// Sets the title and kicks off the start method of the super class, ApplicationTemplate.
 		String title = "Chunkmapper";
 		ApplicationTemplate.start(title, AppFrame.class);
 	}
